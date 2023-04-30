@@ -2,10 +2,11 @@ const os = require('os');
 
 const UTIL_PATH = '../util';
 const HttpUtil = require(`${UTIL_PATH}/HttpUtil.js`);
+const LogUtil = require(`${UTIL_PATH}/LogUtil.js`);
 
 const service = {
   selectMain: (req) => {
-    console.log('[SERVICE]: ' + 'selectMain');
+    LogUtil.log('[SERVICE]: ' + 'selectMain');
     let response = {};
 
     try {
@@ -16,11 +17,11 @@ const service = {
         response = HttpUtil.R001;
       }
 
-      console.log(JSON.stringify(response));
+      LogUtil.log(JSON.stringify(response));
     } catch (error) {
       response = HttpUtil.R003;
 
-      console.log('[ERROR]', JSON.stringify(error?.toString()));
+      LogUtil.log('[ERROR]', JSON.stringify(error?.toString()));
     } finally {
       return response;
     }

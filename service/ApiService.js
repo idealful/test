@@ -114,10 +114,11 @@ const membersData = [
 
 const UTIL_PATH = '../util';
 const HttpUtil = require(`${UTIL_PATH}/HttpUtil.js`);
+const LogUtil = require(`${UTIL_PATH}/LogUtil.js`);
 
 const service = {
   selectApiMembersList: () => {
-    console.log('[SERVICE]: ' + 'selectApiMembersList');
+    LogUtil.log('[SERVICE]: ' + 'selectApiMembersList');
     let response = {};
 
     try {
@@ -128,17 +129,17 @@ const service = {
         response = HttpUtil.R001;
       }
 
-      console.log(JSON.stringify(response));
+      LogUtil.log(JSON.stringify(response));
     } catch (error) {
       response = HttpUtil.R003;
 
-      console.log('[ERROR]', JSON.stringify(error?.toString()));
+      LogUtil.log('[ERROR]', JSON.stringify(error?.toString()));
     } finally {
       return response;
     }
   },
   selectApiMembersItem: (paramSeq) => {
-    console.log('[SERVICE]: ' + 'selectApiMembersItem');
+    LogUtil.log('[SERVICE]: ' + 'selectApiMembersItem');
     let response = {};
 
     try {
@@ -156,11 +157,11 @@ const service = {
         response = HttpUtil.R001;
       }
 
-      console.log(JSON.stringify(response));
+      LogUtil.log(JSON.stringify(response));
     } catch (error) {
       response = HttpUtil.R003;
 
-      console.log('[ERROR]', JSON.stringify(error?.toString()));
+      LogUtil.log('[ERROR]', JSON.stringify(error?.toString()));
     } finally {
       return response;
     }

@@ -3,10 +3,13 @@ const router = express.Router();
 
 const SERVICE_PATH = '../service';
 
+const UTIL_PATH = '../util';
+const LogUtil = require(`${UTIL_PATH}/LogUtil.js`);
+
 const { selectMain } = require(`${SERVICE_PATH}/MainService.js`);
 
 router.get('/', (req, res) => {
-  console.log(`[CONTROLLER]: ${req.originalUrl}`);
+  LogUtil.log(`[CONTROLLER]: ${req.originalUrl}`);
 
   const response = selectMain(req);
   res.status(response.code).json(response);

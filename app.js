@@ -6,10 +6,13 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 80;
 
+const UTIL_PATH = './util';
+const LogUtil = require(`${UTIL_PATH}/LogUtil.js`);
+
 app.listen(PORT, () => {
   const URL = ip.address() + ':' + PORT;
 
-  console.log(`Server is listening : ${URL}`);
+  LogUtil.log(`Server is listening : ${URL}`);
 });
 
 app.all('/*', (req, res, next) => {
