@@ -21,10 +21,10 @@ $ npm i express ip
 
 ## Usage
 
-http://localhost
+http://localhost:3000
 
-http://localhost/api/members
-http://localhost/api/members/1
+http://localhost:3000/api/members
+http://localhost:3000/api/members/1
 
 ## Installation Server : Ubuntu
 
