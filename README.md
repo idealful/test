@@ -45,7 +45,9 @@ $ node -v
 v18.16.0
 $ npm -v
 9.5.1
-$ ./3prd.sh
+$ sudo npm i forever -g
+$ cd /app/test
+$ forever start -c "npm start" ./
 ```
 
 ### OCI 설정
