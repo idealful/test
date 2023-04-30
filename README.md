@@ -19,7 +19,7 @@ $ npm i nodemon -D
 $ npm i express ip
 ```
 
-## Usage
+## Usage - Local
 
 http://localhost:3000
 
@@ -47,3 +47,28 @@ $ npm -v
 9.5.1
 $ ./3prd.sh
 ```
+
+### OCI 설정
+
+```cmd
+# iptables 룰 정책 저장을 위한 패키지 설치
+$ sudo apt-get install iptables-persistent netfilter-persistent
+
+# 특정 포트 오픈 규칙 추가( -I : 가장 먼저 추가)
+$ sudo iptables -I INPUT -p tcp -m tcp --dport 3000 -j ACCEPT
+
+# 정책 영구 저장
+$ sudo netfilter-persistent save
+
+# 설정된 정책 확인
+$ sudo iptables -nL
+```
+
+## Usage - Server
+
+150.230.250.32 = idealful.kro.kr
+
+http://idealful.kro.kr:3000
+
+http://idealful.kro.kr:3000/api/members
+http://idealful.kro.kr:3000/api/members/1
