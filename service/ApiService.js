@@ -121,10 +121,11 @@ const service = {
       const resultData = membersData;
 
       response.resultCode = 200; // OK
-      if (!resultData) {
-        response.resultCode = 204; // No Content
-      }
       response.resultMessage = '성공';
+      if (resultData?.length < 1) {
+        response.resultCode = 204; // No Content
+        response.resultMessage = '결과 없음';
+      }
       response.resultData = resultData;
 
       console.log(JSON.stringify(response));
@@ -147,10 +148,11 @@ const service = {
       resultData = resultData.filter((item) => item.seq === paramSeq);
 
       response.resultCode = 200; // OK
-      if (!resultData) {
-        response.resultCode = 204; // No Content
-      }
       response.resultMessage = '성공';
+      if (resultData?.length < 1) {
+        response.resultCode = 204; // No Content
+        response.resultMessage = '결과 없음';
+      }
       response.resultData = resultData;
 
       console.log(JSON.stringify(response));
