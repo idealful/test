@@ -112,27 +112,25 @@ const membersData = [
   { seq: 111, id: 'test111', name: '테스트111' },
 ];
 
+const UTIL_PATH = '../util';
+const HttpUtil = require(`${UTIL_PATH}/HttpUtil.js`);
+
 const service = {
   selectApiMembersList: () => {
-    console.log(`[SERVICE]: ${service.selectApiMembersList.name}`);
+    console.log('[SERVICE]: ' + 'selectApiMembersList');
     let response = {};
 
     try {
       const resultData = membersData;
 
-      response.resultCode = 200; // OK
-      response.resultMessage = '성공';
+      response = { ...HttpUtil.R000, data: resultData };
       if (resultData?.length < 1) {
-        response.resultCode = 204; // No Content
-        response.resultMessage = '결과 없음';
+        response = HttpUtil.R001;
       }
-      response.resultData = resultData;
 
       console.log(JSON.stringify(response));
     } catch (error) {
-      response.resultCode = 500; // Internal Server Error
-      response.resultMessage = '에러가 발생했습니다. 관리자에게 문의하세요.';
-      response.resultData = null;
+      response = HttpUtil.R003;
 
       console.log('[ERROR]', JSON.stringify(error?.toString()));
     } finally {
@@ -140,26 +138,27 @@ const service = {
     }
   },
   selectApiMembersItem: (paramSeq) => {
-    console.log(`[SERVICE]: ${service.selectApiMembersItem.name}`);
+    console.log('[SERVICE]: ' + 'selectApiMembersItem');
     let response = {};
 
     try {
       let resultData = membersData;
-      resultData = resultData.filter((item) => item.seq === paramSeq);
 
-      response.resultCode = 200; // OK
-      response.resultMessage = '성공';
-      if (resultData?.length < 1) {
-        response.resultCode = 204; // No Content
-        response.resultMessage = '결과 없음';
+      if (isNaN(Number(paramSeq))) {
+        response = HttpUtil.R002;
+        return response;
       }
-      response.resultData = resultData;
+
+      resultData = resultData.filter((item) => item.seq === Number(paramSeq));
+
+      response = { ...HttpUtil.R000, data: resultData };
+      if (resultData?.length < 1) {
+        response = HttpUtil.R001;
+      }
 
       console.log(JSON.stringify(response));
     } catch (error) {
-      response.resultCode = 500; // Internal Server Error
-      response.resultMessage = '에러가 발생했습니다. 관리자에게 문의하세요.';
-      response.resultData = null;
+      response = HttpUtil.R003;
 
       console.log('[ERROR]', JSON.stringify(error?.toString()));
     } finally {
