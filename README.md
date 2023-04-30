@@ -1,6 +1,6 @@
 # test/api
 
-## installation
+## Installation
 
 ```cmd
 $node -v
@@ -18,3 +18,10 @@ $npm i nodemon -D
 ```cmd
 $npm i express ip
 ```
+
+## Usage
+
+http://localhost
+
+http://localhost/api/members
+http://localhost/api/members/1

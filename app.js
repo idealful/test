@@ -12,6 +12,13 @@ app.listen(PORT, () => {
   console.log(`Server is listening : ${URL}`);
 });
 
+app.all('/*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  next();
+});
+
 const CONTROLLER_PATH = `./controller`;
 const MainControllerPath = require(`${CONTROLLER_PATH}/MainController`);
 const ApiControllerPath = require(`${CONTROLLER_PATH}/ApiController`);
