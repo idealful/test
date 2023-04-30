@@ -4,7 +4,7 @@ const ip = require('ip');
 const app = express();
 app.use(express.json());
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 3000;
 
 const UTIL_PATH = './util';
 const LogUtil = require(`${UTIL_PATH}/LogUtil.js`);
